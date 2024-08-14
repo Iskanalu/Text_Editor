@@ -16,14 +16,13 @@ const initdb = async () =>
 // Method that takes some content and adds it to the indexedDB database using the idb module
 export const putDb = async (content) => {
   console.log('PUT to the database');
-  const jatedb = await openDB('jate',1);
+  const jateDb = await openDB('jate',1);
   const tx = jateDb.transaction('jate', 'readwrite');
   const store = tx.objectStore('jate');
   const request = store.put({ id: 1, value: content });
   const result = await request;
   console.log('Data saved to the database', result.value);
 }; 
-
 
 // TODO: Add logic for a method that gets all the content from the database
 // Method that gets content from the IndexedDB database using the idb module
